@@ -1,0 +1,309 @@
+/* add cascadia code tff into css */
+@font-face {
+    font-family: "Cascadia Code";
+    src: url("pages\assets\CascadiaCode.ttf");
+}
+* {
+    font-family: "Cascadia Code";
+}
+:root {
+    /* dark mode & light mode */
+    --bg-color: rgb(39, 39, 39);
+    --navbar-bg-color: rgba(31, 31, 31, 0.345);
+    --prime-text-color: rgb(229, 229, 229);
+    --prime-invert-text-color: rgb(39, 39, 39);
+    --nav-bg-hover-color: rgba(229, 229, 229, 0.379);
+    --animation-ms : 250ms;
+    /* codeforces rank colors */
+    --pupil-color: #40ff00;
+    --specialist-color: #006b05;
+    --expert-color: #003cff;
+    --candidate-master-color: #ff00ff;
+    --master-color: #ff8800;
+    --international-master-color: #ff5100;
+    --grandmaster-color: #ff0000;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(var(--bg-color), rgba(0, 0, 0, 0.61)),
+        url(./assets/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.navbar {
+    height: 100px;
+    background-color: var(--navbar-bg-color);
+    backdrop-filter: blur(5px);
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    margin: -8px;
+    align-items: center;
+    justify-content: space-around;
+}
+.sidebar {
+    height: 90%;
+    position: absolute;
+    width: 0;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    background-color: var(--navbar-bg-color);
+    overflow-x: hidden;
+    transition: var(--animation-ms);
+}
+.link,
+.profilebtn,
+.sidebarbtn {
+    transition: var(--animation-ms);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding-left: 40px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 40px;
+    color: var(--prime-text-color);
+    text-decoration: none;
+    transition: var(--animation-ms);
+}
+.link:hover {
+    background-color: var(--nav-bg-hover-color);
+    backdrop-filter: blur(5px);
+}
+
+.sidebarbtn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--prime-text-color);
+    transition: var(--animation-ms);
+    padding-right: 0px;
+}
+/* hamburgur button with class sidebarbtn and 3 bars bar1 , bar2, bar3 */
+.sidebarbtn .bar1,
+.sidebarbtn .bar2,
+.sidebarbtn .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--prime-text-color);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+/* change the hamburgur button to cross */
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+.change .bar2 {
+    opacity: 0;
+}
+.change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* with width less than 600px convert navbar into a sidebar with a sidebarbtn */
+@media only screen and (max-width: 800px) {
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sidebarbtn {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .profilebtn {
+        position: absolute;
+        top: 0;
+        display: none;
+        right: 50px;
+    }
+    .navbar {
+        height: 100px;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        transition: var(--animation-ms);
+    }
+
+    .navbar .link {
+        display: none;
+    }
+    .sidebar .link {
+        transition: var(--animation-ms);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        padding-left: 40px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding-right: 40px;
+        color: var(--prime-text-color);
+        text-decoration: none;
+        transition: var(--animation-ms);
+        margin: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .profilebtn {
+        display: none;
+    }
+}
+
+.profilebtn:hover {
+    background-color: var(--nav-bg-hover-color);
+    backdrop-filter: blur(5px);
+}
+
+#profile {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(var(--bg-color), rgb(16, 16, 16));
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userimg {
+    object-fit: contain;
+    width: 50%;
+    border-radius: 20px;
+    transition: var(--animation-ms);
+    cursor: pointer;
+}
+.userimg:hover {
+    transform: rotate(5deg);
+    image-rendering: crisp-edges;
+    image-resolution: from-image;
+    backdrop-filter: grayscale(0.5);
+}
+
+#profile .closebtn {
+    width: 100%;
+}
+
+#profile .link {
+    width: 100%;
+}
+
+.userinfo {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 20px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.userdata {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 20px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--prime-text-color);
+}
+
+.location,.organization,.contribution,.lastonline,.friends,.registration {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.rank,.rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.pupil {
+    color: var(--pupil-color);
+}
+
+.specialist {
+    color: var(--specialist-color);
+}
+
+.expert {
+    color: var(--expert-color);
+}
+
+.candidate {
+    color: var(--candidate-color);
+}
+
+.master {
+    color: var(--master-color);
+}
+
+.grandmaster {
+    color: var(--grandmaster-color);
+}
+
+.legendarygrandmaster {
+    color: var(--legendarygrandmaster-color);
+}

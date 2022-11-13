@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="users.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
+    <title>Users</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="link" href="../index.html">Home</a>
+        <a class="link" href="../contests">Contests</a>
+        <a class="link" href="./users/index.html">Users</a>
+        <a class="link" href="../problems">Problems</a>
+        <a class="link" href="../submissions">Submissions</a>
+        <!-- hamburger icon for sidebar btn -->
+        <div class="sidebarbtn" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <div class="profilebtn" onclick="openProfile()">
+            <span class="material-symbols-outlined">
+                account_circle
+            </span>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="link" href="../index.html">Home</a>
+        <a class="link" href="../contests">Contests</a>
+        <a class="link" href="../users/index.html">Users</a>
+        <a class="link" href="../problems">Problems</a>
+        <a class="link" href="../submissions">Submissions</a>
+        <a class="link" href="../profile">Profile</a>
+        <a class="link" href="../settings">Settings</a>
+    </div>
+    <div class="profilesidebar" id=profile>
+        <div class="closbtn link" onclick="closeProfile()">close</div>
+        <img id="userimg" class="userimg" src="">
+        <div class="userinfo" id="profileuserinfo">
+        </div>
+        <div class="settings link ">settings</div>
+        <div class="logout link" onclick="logout()">logout</div>
+    </div>
+    <div class="buttons">
+        <div class="prevbtn" id="prev"><span class="material-symbols-outlined">
+                arrow_back</span>
+        </div>
+        <div class="organization">
+            <input list="orglist" name="organization" id="orgs" style="overflow-y:auto;" placeholder="Organization">
+            <datalist id="orglist" style="overflow-y:auto;"></datalist>
+        </div>
+        <div class="usersearch">
+            <input id="usersearch" name="user" placeholder="user">
+        </div>
+        <div class="country">
+            <input list="countrylist" id="couns" name="country" placeholder="country">
+            <datalist id="countrylist"></datalist>
+        </div>
+        <div class="nextbtn" id="next"><span class="material-symbols-outlined">
+                arrow_forward</span>
+        </div>
+    </div>
+    <div class="users" id="users">
+    </div>
+    <script src="./users.js"></script>
+</body>
+
+</html>

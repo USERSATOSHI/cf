@@ -1,0 +1,14 @@
+{
+  "name": "cf-app",
+  "dependencies": {
+    "electron": "^21.2.3",
+    "undici": "^5.12.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "buildStart": "tsc --build tsconfig.json && electron ./dist/main.js",
+    "electronStart": "electron ./dist/main.js"
+  }
+}

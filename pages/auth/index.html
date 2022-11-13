@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
+    <title>Auth</title>
+</head>
+
+<body>
+    <form class="form" action="/" method="post">
+        <div class="formPart">
+            <div class="label">Handle</div>
+            <input type="text" id="handle" class="input" placeholder="Enter your handle">
+        </div>
+        <div class="formPart checkbox">
+            <div class="label">Adding ApiKey :</div>
+            <!-- sliding checkbox -->
+            <label class="switch">
+                <input type="checkbox" id="checkbox" onclick="toggleFormPart()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="formPart hidden">
+            <div class="label">Api Key</div>
+            <input type="password" id="apiKey" class="input" placeholder="Enter your Api Key">
+        </div>
+        <div class="formPart hidden">
+            <div class="label">Api Secret</div>
+            <input type="password" id="apiSecret" class="input" placeholder="Enter your Api Secret">
+        </div>
+        <div class="formbtn" onclick="submitAuth()">
+        <span class="material-symbols-outlined">
+            send
+        </span>
+        </div>
+        <div id="error" class="hidden">Invalid Handle</div>
+    </form>
+    <script src="auth.js"></script>
+</body>
+
+</html>
