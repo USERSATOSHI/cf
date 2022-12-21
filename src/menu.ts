@@ -1,3 +1,4 @@
+import  path  from 'path';
 import { Menu, MenuItem, BrowserWindow, shell} from "electron";
 
 const menu = new Menu();
@@ -19,7 +20,8 @@ const m = new MenuItem({
             click: () =>
             {
                 // redirect to cf app about page
-                
+                const win = <BrowserWindow> BrowserWindow.getFocusedWindow();
+                win.loadFile( path.join(__dirname,"../pages/misc/about/index.html" ));
                 
             }
         }],
@@ -35,7 +37,7 @@ const m2 = new MenuItem( {
             {
                 // redirect to home page
                 const win = <BrowserWindow>BrowserWindow.getFocusedWindow();
-                win.loadFile( "../pages/index.html" );
+                win.loadFile( path.join(__dirname,"../pages/index.html") );
 
             },
         }, {
@@ -86,7 +88,7 @@ const m3 = new MenuItem( {
             {
                 // redirect to compare page
                 const win = <BrowserWindow> BrowserWindow.getFocusedWindow();
-                win.loadFile( "../pages/misc/compare/index.html" );
+                win.loadFile( path.join(__dirname,"../pages/misc/compare/index.html" ));
             }
         }, {
             label: "Rating Change",
@@ -95,7 +97,7 @@ const m3 = new MenuItem( {
             {
                 // redirect to rating change page
                 const win = <BrowserWindow> BrowserWindow.getFocusedWindow();
-                win.loadFile( "../pages/misc/ratingChange/index.html" );
+                win.loadFile( path.join(__dirname,"../pages/misc/ratingChange/index.html" ));
             }
         }
     ]

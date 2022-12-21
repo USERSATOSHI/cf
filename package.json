@@ -1,14 +1,23 @@
 {
-  "name": "cf-app",
+  "name": "codeforces_app",
+  "version": "1.0.0-alpha.1",
+  "productName": "CodeForces App",
+  "main": "dist/main.js",
+  "config": {},
   "dependencies": {
-    "electron": "^21.2.3",
+    "electron": "^22.0.0",
     "undici": "^5.12.0"
   },
   "devDependencies": {
+    "@electron/asar": "^3.2.2",
+    "electron-packager": "^17.1.1",
+    "electron-packager-interactive": "^0.1.3",
+    "electron-winstaller": "^5.1.0",
     "typescript": "^4.8.4"
   },
   "scripts": {
     "buildStart": "tsc --build tsconfig.json && electron ./dist/main.js",
-    "electronStart": "electron ./dist/main.js"
+    "electronStart": "electron ./dist/main.js",
+    "build": "tsc --build tsconfig.json && node ./installers/packager.js && node ./installers/installer.js"
   }
 }
