@@ -108,6 +108,10 @@ document.addEventListener( "DOMContentLoaded", async () =>
         const userhandle = result[0].handle;
         const userimg = document.getElementById("userimg");
         userimg.src = titlePhoto;
+        userimg.onclick = () =>
+        {
+            window.location.href = `../profile/index.html?handle=${handle}`
+        }
         userinfo.innerHTML = `
     <div class = "handle">  <span class= "${rank}">${userhandle}</span> ${
             firstName || lastName
@@ -125,8 +129,22 @@ document.addEventListener( "DOMContentLoaded", async () =>
     <div class = "registration">  Registration: ${new Date(
         registrationTimeSeconds * 1000,
     ).toLocaleString()} </div>
-    <div class = "friends">  Friends: ${friendOfCount} </div>
+    <div class = "friends" id=fri>  Friends: ${friendOfCount} </div>
     `;
+
+        const fri = document.getElementById("fri");
+
+        if (apiKey && secret) {
+            fri.style.cursor = "pointer";
+        }
+        fri?.addEventListener("click", async () => {
+            if (
+                apiKey &&
+                secret
+            ) {
+                window.location.href = `../friends/index.html`;
+            }
+        });
     }
 });
 
@@ -151,7 +169,7 @@ function pageRender(results) {
     pageResults.forEach((user) => {
         const rateduser = document.createElement("div");
         rateduser.onclick = () => {
-            window.location.href = `../user/index.html?user=${user.handle}`;
+            window.location.href = `../profile/index.html?user=${user.handle}`;
         };
         rateduser.classList.add("user");
         rateduser.innerHTML = `

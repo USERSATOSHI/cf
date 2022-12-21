@@ -1,5 +1,3 @@
-
-
 function myFunction(x) {
     x.classList.toggle("change");
     const sidebar = document.getElementById("sidebar");
@@ -12,20 +10,14 @@ function myFunction(x) {
     }
 }
 
-function openProfile() {
-    const profile = document.getElementById("profile");
-    profile.style.width = "25%";
-}
-
 function closeProfile() {
     const profile = document.getElementById("profile");
     profile.style.width = "0px";
 }
 
-
-function logout() {
-    window.electron.store.clear();
-    window.location.href = "./auth/index.html";
+function openProfile() {
+    const profile = document.getElementById("profile");
+    profile.style.width = "25%";
 }
 async function loadProfile() {
     const auth = await window.electron.store.get("auth");
@@ -62,9 +54,6 @@ async function loadProfile() {
         const userhandle = result[0].handle;
         const userimg = document.getElementById("userimg");
         userimg.src = titlePhoto;
-        userimg.onclick = () => {
-            window.location.href = `./profile/index.html?handle=${handle}`;
-        };
         userinfo.innerHTML = `
     <div class = "handle">  <span class= "${rank}">${userhandle}</span> ${
             firstName || lastName
@@ -82,7 +71,7 @@ async function loadProfile() {
     <div class = "registration">  Registration: ${new Date(
         registrationTimeSeconds * 1000,
     ).toLocaleString()} </div>
-     <div class = "friends" id=fri>  Friends: ${friendOfCount} </div>
+    <div class = "friends" id=fri>  Friends: ${friendOfCount} </div>
     `;
 
         const fri = document.getElementById("fri");
@@ -95,14 +84,51 @@ async function loadProfile() {
                 apiKey &&
                 secret
             ) {
-                window.location.href = `./friends/index.html`;
+                window.location.href = `../friends/index.html`;
             }
         });
     }
 }
-document.addEventListener("DOMContentLoaded", async function () {
 
-    await loadProfile();
-} );
-
-
+document.addEventListener("DOMContentLoaded", async () => {
+    loadProfile();
+    const auth = await window.electron.store.get("auth");
+    const uuser = window.location.search.split("=")[1];
+    const allfriends = (await window.electron.requestAPI("user.friends", {
+        onlyOnline: false,
+    }, auth )).result;
+    const online = (await window.electron.requestAPI("user.friends", {
+        onlyOnline: true,
+    }, auth )).result;
+    const rest = allfriends.filter( x => !online.includes( x ) );
+    const container = document.getElementById( "container" );
+    container.innerHTML = `
+        <div class= online >
+            <div class=head >
+                <h3>Online</h3>
+                <h6> ${online.length} </h6>
+            </div>
+            <div class=list>
+                ${online
+                    .map((x) => {
+                        return `<a href="../profile/index.html?handle=${x}"><h4> ${x} </h4> </a>`;
+                    })
+                    .join("\n")}
+            </div>
+        </div>
+                <div class= rest >
+            <div class=head >
+                <h3>Offline</h3>
+                <h6> ${rest.length} </h6>
+            </div>
+            <div class=list>
+                ${rest
+                    .map((x) => {
+                        return `<a href="../profile/index.html?handle=${x}"><h4> ${x} </h4> </a>`;
+                    })
+                    .join("\n")}
+            </div>
+        </div>
+    `;
+    
+});

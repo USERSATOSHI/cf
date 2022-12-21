@@ -1,5 +1,3 @@
-
-
 function myFunction(x) {
     x.classList.toggle("change");
     const sidebar = document.getElementById("sidebar");
@@ -21,7 +19,6 @@ function closeProfile() {
     const profile = document.getElementById("profile");
     profile.style.width = "0px";
 }
-
 
 function logout() {
     window.electron.store.clear();
@@ -91,18 +88,12 @@ async function loadProfile() {
             fri.style.cursor = "pointer";
         }
         fri?.addEventListener("click", async () => {
-            if (
-                apiKey &&
-                secret
-            ) {
+            if (apiKey && secret) {
                 window.location.href = `./friends/index.html`;
             }
         });
     }
 }
 document.addEventListener("DOMContentLoaded", async function () {
-
     await loadProfile();
-} );
-
-
+});

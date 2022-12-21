@@ -1,5 +1,5 @@
-
-
+var results = [];
+var currentPage = 0;
 function myFunction(x) {
     x.classList.toggle("change");
     const sidebar = document.getElementById("sidebar");
@@ -21,7 +21,6 @@ function closeProfile() {
     const profile = document.getElementById("profile");
     profile.style.width = "0px";
 }
-
 
 function logout() {
     window.electron.store.clear();
@@ -63,7 +62,7 @@ async function loadProfile() {
         const userimg = document.getElementById("userimg");
         userimg.src = titlePhoto;
         userimg.onclick = () => {
-            window.location.href = `./profile/index.html?handle=${handle}`;
+            window.location.href = `../profile/index.html?handle=${handle}`;
         };
         userinfo.innerHTML = `
     <div class = "handle">  <span class= "${rank}">${userhandle}</span> ${
@@ -91,18 +90,78 @@ async function loadProfile() {
             fri.style.cursor = "pointer";
         }
         fri?.addEventListener("click", async () => {
-            if (
-                apiKey &&
-                secret
-            ) {
-                window.location.href = `./friends/index.html`;
+            if (apiKey && secret) {
+                window.location.href = `../friends/index.html`;
             }
         });
     }
 }
-document.addEventListener("DOMContentLoaded", async function () {
 
+async function getContestList ()
+{
+    const id = window.location.search.split("=")[1];
+    const url = `https://codeforces.com/contest/${ id }`;
+    const response = await fetch( url );
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString( html, "text/html" );
+    const contest = doc.querySelector( ".datatable" );
+    const contestList = contest.querySelectorAll( "tr" );
+    const results = [];
+    for ( let i = 1; i < contestList.length; i++ )
+    {
+        const contest = contestList[ i ];
+        const id = contest.querySelector( "td:nth-child(1)" )?.textContent;
+        const name = contest.querySelector( "td:nth-child(2)" )?.textContent;
+        const solvedcount = contest.querySelector( "td:nth-child(4)" )?.textContent;
+        results.push( {
+            id,
+            name,
+            solvedcount,
+        } );
+    }
+    return results;
+}
+
+function pageRender(results) {
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+    const page = results;
+    const contestId = window.location.search.split("=")[1];
+    page.forEach((problem) => {
+        const { id, name, solvedcount } = problem;
+        const div = document.createElement("div");
+        div.className = "problem";
+        div.style.cursor = "pointer";
+        div.onclick = () =>
+        { 
+            window.location.href = `../problems/problem.html?contestId=${contestId}&index=${id}`;
+        }
+        div.innerHTML = `
+        <div class=wrap>
+        <h4> Id: </h4>
+        <div class="problemid">${id}</div>
+        </div>
+        <div class=wrap>
+        <h4> Name: </h4>
+        <div class="problemname">${name}</div>
+        </div>
+        <div class=wrap>
+        <h4> Solved Count: </h4>
+        <div class="problemsolved">${solvedcount}</div>
+        </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => {
     await loadProfile();
-} );
-
+    results = await getContestList();
+    const id = window.location.search.split( "=" )[ 1 ];
+    const title = document.getElementById( "title" );
+    title.innerHTML = `Contest : ${ id }`;
+    pageRender( results );
+});
 

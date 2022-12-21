@@ -25,5 +25,7 @@ contextBridge.exposeInMainWorld("electron", {
         path: string,
         params: Record<string, unknown> = {},
         auth: { apiKey: string; secret: string } | null = null,
-    ) => ipcRenderer.invoke("requestAPI", path, params, auth),
+    ) => ipcRenderer.invoke( "requestAPI", path, params, auth ),
+    gobackpage: () => ipcRenderer.invoke( "gobackpage" ),
+    getAppDetails: () => ipcRenderer.invoke( "getAppDetails" ),
 });

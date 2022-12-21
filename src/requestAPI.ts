@@ -9,11 +9,12 @@ const sha512hex = (str: string) => {
 };
 // random 6 digitnumber only
 const random = () => {
-    return Math.floor(100000 + Math.random() * 900000);
+    return Math.floor(100000 + Math.random() * 800000);
 };
 const requestAPI = async ( path: string, params: Record<string, unknown> = {}, auth: { apiKey: string, secret: string; } | null = null) => {
     let parsedParams = "";
     let parsedAuth = "";
+    console.log({auth})
     if (auth) {
         const time = Math.floor(Date.now() / 1000);
         const randomNum = random();
@@ -22,21 +23,24 @@ const requestAPI = async ( path: string, params: Record<string, unknown> = {}, a
         parsedParams = Object.keys(params)
             .sort()
             .map((key) => `${key}=${params[key]}`)
-            .join("&");
+            .join( "&" );
+        console.log({aparsedParams: parsedParams});
         const sig = sha512hex(
             `${randomNum}/${path}?${parsedParams}#${auth.secret}`,
         );
-        parsedAuth = `&apiKey=${auth.apiKey}&time=${time}&apiSig=${sig}`;
+        parsedParams += `&apiSig=${ randomNum + sig }`;
+                console.log({ sig, parsedParams });
     } else {
         parsedParams = Object.keys(params)
             .sort()
             .map((key) => `${key}=${params[key]}`)
             .join("&");
     }
+    console.log({parsedParams});
     const res = await fetch(
         `${url + path}${
             parsedParams !== "" ? `?${parsedParams}` : parsedParams
-        }${parsedAuth != "" ? `&${parsedAuth}` : parsedAuth}`,
+        }`,
         {
             method: "GET",
             // headers: {
@@ -44,7 +48,7 @@ const requestAPI = async ( path: string, params: Record<string, unknown> = {}, a
             // },
         },
     );
-    return await res.json();
+    return await res.json().catch(console.error);
 };
 
 export default requestAPI;

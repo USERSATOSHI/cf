@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <!-- user.css -->
+    <link rel="stylesheet" href="./user.css">
+    <!-- material symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="link" href="../index.html">Home</a>
+        <a class="link" href="../contests/index.html">Contests</a>
+        <a class="link" href="../users/index.html">Users</a>
+        <a class="link" href="../problems/index.html">Problems</a>
+        <a class="link" href="../submissions/index.html">Submissions</a>
+        <!-- hamburger icon for sidebar btn -->
+        <div class="sidebarbtn" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <div class="profilebtn" onclick="openProfile()">
+            <span class="material-symbols-outlined">
+                account_circle
+            </span>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="link" href="../index.html">Home</a>
+        <a class="link" href="../contests/index.html">Contests</a>
+        <a class="link" href="../users/index.html">Users</a>
+        <a class="link" href="../problems/index.html">Problems</a>
+        <a class="link" href="../submissions/index.html">Submissions</a>
+        <a class="link" href="../profile/index.html">Profile</a>
+        <a class="link" href="../settings/index.html">Settings</a>
+    </div>
+    <div class="profilesidebar" id=profile>
+        <div class="closbtn link" onclick="closeProfile()">close</div>
+        <img id="userimg" class="userimg" src="">
+        <div class="userinfo" id="userinfo">
+        </div>
+        <div class="settings link ">settings</div>
+        <div class="logout link" onclick="logout()">logout</div>
+    </div>
+    <div class="container" id="rateduser">
+
+    </div>
+    <div class="statsContainer">
+        <h2>Stats</h2>
+        <div class="sustats">
+            <canvas id="ratingChart"></canvas>
+        </div>
+        <div class="substats">
+            <div class="renderchoice">
+                <div class="choice" onclick="renderPieChart()">Pie</div>
+                <div class="choice" onclick="renderBarChart()">Bar</div>
+                <div class="choice" onclick="renderRadarChart()">Radar</div>
+            </div>
+            <canvas id="stats"></canvas>
+        </div>
+        <div class="substats">
+            <div class="renderchoice">
+                <div class="choice" onclick="renderprobPieChart()">Pie</div>
+                <div class="choice" onclick="renderprobBarChart()">Bar</div>
+                <div class="choice" onclick="renderprobRadarChart()">Radar</div>
+            </div>
+            <canvas id="probtypes"></canvas>
+        </div>
+        <div class="substats">
+            <div class="renderchoice">
+                <div class="choice" onclick="renderRatesPieChart()">Pie</div>
+                <div class="choice" onclick="renderRatesBarChart()">Bar</div>
+                <div class="choice" onclick="renderRatesRadarChart()">Radar</div>
+            </div>
+            <canvas id="rates"></canvas>
+        </div>
+        <div class="substats">
+            <div class="renderchoice">
+                <div class="choice" onclick="renderlangPieChart()">Pie</div>
+                <div class="choice" onclick="renderlangBarChart()">Bar</div>
+                <div class="choice" onclick="renderlangRadarChart()">Radar</div>
+            </div>
+            <canvas id="lang"></canvas>
+        </div>
+        <div class="substats">
+            <div class="renderchoice">
+                <div class="choice" onclick="renderTagsPieChart()">Pie</div>
+                <div class="choice" onclick="renderTagsBarChart()">Bar</div>
+                <div class="choice" onclick="renderTagsRadarChart()">Radar</div>
+            </div>
+            <canvas id="tags"></canvas>
+        </div>
+    </div>
+    <script src="./user.js"></script>
+</body>
+
+</html>

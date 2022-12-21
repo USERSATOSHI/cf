@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CF App</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./index.css" />
+    <!-- material-symbols-outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="link" href="">Home</a>
+        <a class="link" href="../../contests/index.html">Contests</a>
+        <a class="link" href="../../users/index.html">Users</a>
+        <a class="link" href="../../problems/index.html">Problems</a>
+        <a class="link" href="../../submissions/index.html">Submissions</a>
+        <!-- hamburger icon for sidebar btn -->
+        <div class="sidebarbtn" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <div class="profilebtn" onclick="openProfile()">
+            <span class="material-symbols-outlined">
+                account_circle
+            </span>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="link" href="">Home</a>
+        <a class="link" href="../../contests/index.html">Contests</a>
+        <a class="link" href="../../users/index.html">Users</a>
+        <a class="link" href="../../problems/index.html">Problems</a>
+        <a class="link" href="../../submissions/index.html">Submissions</a>
+        <a class="link" href="../../profile/index.html">Profile</a>
+        <a class="link" href="../../settings/index.html">Settings</a>
+    </div>
+    <div class="profilesidebar" id=profile>
+        <div class="closbtn link" onclick="closeProfile()">close</div>
+        <img id="userimg" class="userimg" src="">
+        <div class="userinfo" id="userinfo">
+        </div>
+        <div class="settings link ">settings</div>
+        <div class="logout link" onclick="logout()">logout</div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

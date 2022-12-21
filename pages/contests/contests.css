@@ -40,8 +40,8 @@
 html {
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(var(--bg-color), rgba(0, 0, 0, 0.61)),
-        url(./assets/bg.jpg);
+    background-image: linear-gradient(rgba(39, 39, 39, 0.089), rgb(0, 0, 0)),
+        url(../assets/bg.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -322,44 +322,163 @@ html {
 }
 
 
-.quickbox {
+.buttons {
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    width: 100%;
-    height:100px;
-    margin-top: 50px;
+    gap: 5px;
+    height: 100px;
+    width: 75%;
     color: var(--prime-text-color);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     transition: var(--animation-ms);
-    background-color: rgba(31, 31, 31, 0.107);
-    backdrop-filter: blur(10px);
+    background-color: rgba(31, 31, 31, 0.372);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
 }
 
-.quickboxitem {
+.nextbtn,
+.prevbtn {
     display: flex;
     flex-direction: row;
-    gap:10px;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    padding: 20px;
-    cursor: pointer;
+    gap: 5px;
+    height: 100px;
+    width: 25%;
     color: var(--prime-text-color);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     transition: var(--animation-ms);
-    background-color: rgba(229, 229, 229, 0.126);
+    background-color: rgba(31, 31, 31, 0.541);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.usersearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 100px;
+}
+
+.container,.ccon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    color: var(--prime-text-color);
+    font-size: 20px;
+}
+
+.ccon {
+    width:auto;
+}
+
+.cntair {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contest-card,.problem {
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    color: var(--prime-text-color);
+    font-size: 20px;
+    padding: 20px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+    background-color: rgba(31, 31, 31, 0.541);
     backdrop-filter: blur(10px);
 }
 
-.quickboxitem:hover > .desc {
-    font-size: 15px;
+.problem {
+    justify-content: space-between;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.desc {
-    font-size: 0;
+.problem-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 15px;
+    font-weight: 600;
     transition: var(--animation-ms);
+}
+h4 {
+    font-weight: bold;
+    font-size: 20px;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.expandWrap {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.headWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    color: var(--prime-text-color);
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--animation-ms);
+}
+
+.expand {
+    cursor: pointer;
+    transition: var(--animation-ms);
+}
+
+.expand:hover {
+    transform: scale(1.1);
+    background-color: rgba(39, 39, 39, 0.089);
+    backdrop-filter: blur(5px);
 }

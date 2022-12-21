@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="contests.css">
+    <link rel="stylesheet" href="./p.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <link rel="stylesheet" href="./math.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" />
-    <title>Contests</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="../submissions/dracula.css">
+    <title id="title">Problem</title>
 </head>
 
 <body>
     <div class="navbar">
         <a class="link" href="../index.html">Home</a>
-        <a class="link" href="">Contests</a>
+        <a class="link" href="../contests/index.html">Contests</a>
         <a class="link" href="../users/index.html">Users</a>
         <a class="link" href="../problems/index.html">Problems</a>
         <a class="link" href="../submissions/index.html">Submissions</a>
@@ -31,7 +36,7 @@
     </div>
     <div class="sidebar" id="sidebar">
         <a class="link" href="../index.html">Home</a>
-        <a class="link" href="">Contests</a>
+        <a class="link" href="../contests/index.html">Contests</a>
         <a class="link" href="../users/index.html">Users</a>
         <a class="link" href="../problems/index.html">Problems</a>
         <a class="link" href="../submissions/index.html">Submissions</a>
@@ -51,21 +56,31 @@
             <div class="prevbtn" id="prev"><span class="material-symbols-outlined">
                     arrow_back</span>
             </div>
-
-            <div class="contestsearch">
-                <input id="contestsearch" name="contest" placeholder="contest Id">
+            <div class="rateinput">
+                <input list="ratings" name="rating" id="rates" style="overflow-y:auto;" placeholder="Rating...">
+                <datalist id="ratings" style="overflow-y:auto;"></datalist>
             </div>
-
+            <div class="prosearch">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+                <input id="prosearch" name="problem" placeholder="Problem Name...">
+            </div>
+            <div class="tags">
+                <input list="tags" name="tags" id="tagger" style="overflow-y:auto;" placeholder="Tag...">
+                <datalist id="tags" style="overflow-y:auto;"></datalist>
+            </div>
             <div class="nextbtn" id="next"><span class="material-symbols-outlined">
                     arrow_forward</span>
             </div>
         </div>
-
         <div class="container" id="container">
+
         </div>
     </div>
 
-    <script src="./contests.js"></script>
+
+    <script src="./p.js"></script>
 </body>
 
 </html>
