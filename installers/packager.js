@@ -10,8 +10,7 @@ const options = {
     appBuildId: "1.0.0-alpha.1",
     icon: "./assets/unnamed.ico",
     asar: true,
-    platform: "win32",
-    arch: "x64",
+    all: true,
     electronVersion: "22.0.0",
     ignore: [
         "releases",
